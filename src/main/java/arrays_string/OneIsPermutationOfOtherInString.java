@@ -15,27 +15,25 @@ public class OneIsPermutationOfOtherInString {
 	 * @param second
 	 * @return
 	 */
-	private static boolean isOneOneStringIsPermutationOfOtherString(String first, StringBuffer second) {
+	private static boolean isOneOneStringIsPermutationOfOtherString(String first, String second) {
 		// one approach is will sort both strings then compare..
 
-		for (int i = 0; i < first.length(); i++) {
-             boolean flag = true;
-			for (int j = 0; j < second.length(); j++) {
-				if (first.charAt(i) == second.charAt(j)) {
-					
-					flag = false;
-					second.deleteCharAt(j);
-			System.out.println(i+""+j);		
-					if (i == first.length() - 1)
-						return true;
-
+		if (first.length() != second.length())
+			return false;
+		char[] secondArray = second.toCharArray();
+		for(int i =0 ;i<first.length();i++) {
+			for(int j=i;j<secondArray.length;j++) {
+				if(first.charAt(i) == secondArray[j]) {
+					char temp = secondArray[j];
+					secondArray[j] = secondArray[i];
+					secondArray[i] = temp;
 					break;
 				}
+				if(j==secondArray.length-1)
+					return false;
 			}
-			if ((first.length() != second.length()) || flag) {System.out.println(first.length()+"here"+second.length());
-				return false;}
 		}
-		return false;
+		return true;
 	}
 
 	/**
@@ -43,8 +41,7 @@ public class OneIsPermutationOfOtherInString {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		boolean result = isOneOneStringIsPermutationOfOtherString("abc", new StringBuffer("cbac"));
-		//its not working
+		boolean result = isOneOneStringIsPermutationOfOtherString("abc", "cba");
 		System.out.println("Result = " + result);
 	}
 
