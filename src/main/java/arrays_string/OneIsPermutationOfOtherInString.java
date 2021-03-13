@@ -41,7 +41,7 @@ public class OneIsPermutationOfOtherInString {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		boolean result = isOneOneStringIsPermutationOfOtherString("abc", "cba");
+		boolean result = isOneOneStringIsPermutationOfOtherString("abc", "cab");
 		System.out.println("Result = " + result);
 	}
 
